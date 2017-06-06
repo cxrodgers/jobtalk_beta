@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from core.views import UserRegistration, successful, ReviewSubmission
+from core.views import (successful, ReviewSubmission,
+    UserRegistrationWizard)
+from core.forms import UserRegistrationForm1, UserRegistrationForm2
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^users/', UserRegistration.as_view(), name='user-registration'),
+    url(r'^users/', UserRegistrationWizard.as_view(), name='user-registration'),
     url(r'^reviews/', ReviewSubmission.as_view(), name='review-submission'),
     url(r'success/', successful, name='successful'),
 ]

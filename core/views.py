@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView, DetailView
 
 from formtools.wizard.views import CookieWizardView
 
@@ -27,6 +27,15 @@ class ReviewSubmission(CreateView):
     form_class = ReviewForm
     model = Review
     success_url = reverse_lazy('successful')
+
+
+class ReviewList(ListView):
+    model = Review
+    context_object_name = 'review_list'
+    
+
+class ReviewDetail(DetailView):
+    model = Review
 
 
 def successful(request):

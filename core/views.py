@@ -63,7 +63,7 @@ class ReviewSubmissionWizard(CookieWizardView):
             for field, value in form.cleaned_data.iteritems():
                 setattr(instance, field, value)
         instance.save()
-        
+
         return render_to_response('core/success.html')    
 
 
